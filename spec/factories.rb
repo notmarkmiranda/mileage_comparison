@@ -3,6 +3,7 @@ FactoryGirl.define do
     @random_number ||= (1..100).to_a.shuffle
     @random_number[n]
   end
+
   factory :user do
     sequence(:email) { |n| "asdf#{n}@gmail.com" }
     sequence(:login) { |n| "12345#{n}" }
