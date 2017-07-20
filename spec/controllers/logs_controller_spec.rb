@@ -4,7 +4,7 @@ RSpec.describe LogsController, type: :controller do
   context 'logged in user can do the things' do
     before do
       user = FactoryGirl.create(:user)
-      @log = FactoryGirl.create(:driving_log)
+      @log = FactoryGirl.create(:driving_log, user: user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     end
 
@@ -16,6 +16,12 @@ RSpec.describe LogsController, type: :controller do
     it 'GET#show' do
       get :show, params: { id: @log.id }
       expect(response).to render_template :show
+    end
+
+    it 'GET#show - wrong user' do
+      new_log = FactoryGirl.create(:manual_log)
+      get :show, params: { id: new_log.id }
+      expect(response).to redirect_to root_path
     end
 
     it 'GET#new' do
@@ -41,6 +47,12 @@ RSpec.describe LogsController, type: :controller do
       expect(response).to render_template :edit
     end
 
+    it 'GET#edit' do
+      new_log = FactoryGirl.create(:manual_log)
+      get :edit, params: { id: new_log.id }
+      expect(response).to redirect_to root_path
+    end
+
     it 'PATCH#update - happy' do
       patch :update, params: { id: @log.id, log: { distance: 12 } }
       expect(response).to redirect_to @log
@@ -57,7 +69,7 @@ RSpec.describe LogsController, type: :controller do
     end
   end
 
-  context 'sad paths' do
+  context 'non-logged in user' do
     before { @log = FactoryGirl.create(:driving_log) }
 
     it 'GET#index' do

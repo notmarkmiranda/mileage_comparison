@@ -41,7 +41,7 @@ class LogsController < ApplicationController
 
   private
   def check_ownership
-    return unless @log.user_id == current_user.id
+    redirect_to root_path unless @log.user_id == current_user.id
   end
 
   def load_log
