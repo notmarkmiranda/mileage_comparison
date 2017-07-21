@@ -11,4 +11,17 @@ RSpec.describe Log, type: :model do
   context 'relationships' do
     it { should belong_to :user }
   end
+
+  context 'methods' do
+    before do
+      user = FactoryGirl.create(:user)
+      first_log = FactoryGirl.create(:manual_log, user: user)
+      other_log = FactoryGirl.create(:driving_log)
+      @second_log = FactoryGirl.create(:driving_log, user: user)
+    end
+
+    it 'returns 2 for user log' do
+      expect(@second_log.number_for_user).to eq(2)
+    end
+  end
 end

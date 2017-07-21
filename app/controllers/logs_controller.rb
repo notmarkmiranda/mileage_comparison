@@ -12,6 +12,7 @@ class LogsController < ApplicationController
 
   def new
     @log = current_user.logs.new
+    @travel_types = Log.travel_types.keys
   end
 
   def create
@@ -49,6 +50,6 @@ class LogsController < ApplicationController
   end
 
   def log_params
-    params.require(:log).permit(:user_id, :distance, :date, :travel_type)
+    params.require(:log).permit(:user_id, :distance, :date, :travel_type, :notes)
   end
 end

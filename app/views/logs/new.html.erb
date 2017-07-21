@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-offset-4 col-lg-4">
+
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          Create a New Mileage Log
+        </div>
+        <div class="panel-body">
+          <%= form_for @log do |f| %>
+            <div class="form-group">
+              <%= f.label :distance %>
+              <%= f.text_field :distance, class: 'form-control', autofocus: true %>
+            </div>
+            <div class="form-group">
+              <%= f.label :date %>
+              <%= f.date_field :date, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :travel_type %>
+              <%= f.select :travel_type, @travel_types, {}, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :notes %>
+              <%= f.text_area :notes, class: 'form-control' %>
+            </div>
+            <%= f.submit 'Create Mileage Log', class: 'btn btn-primary' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

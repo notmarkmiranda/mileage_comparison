@@ -13,7 +13,7 @@ RSpec.describe SessionsController, type: :controller do
 
     it 'POST#create - happy' do
       post :create, params: { session: { login: @user.login, password: 'password' } }
-      expect(response).to redirect_to @user
+      expect(response).to redirect_to dashboard_path
     end
 
     it 'POST#create - sad login' do

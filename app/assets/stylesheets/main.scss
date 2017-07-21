@@ -1,0 +1,16 @@
+.custom-bullet {
+  list-style: none;
+  & > li {
+    margin-bottom: 10px;
+    & > span.glyphicon {
+    color: gray;
+    margin-left: -17px;
+    margin-right: 10px;
+    }
+  }
+}
+
+div.action-buttons {
+  margin-top: -3px;
+}
+
