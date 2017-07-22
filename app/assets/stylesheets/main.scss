@@ -14,3 +14,22 @@ div.action-buttons {
   margin-top: -3px;
 }
 
+.quick-stats-header {
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 2px;
+  & > p.smaller-text {
+    margin-top: -10px;
+    margin-bottom: -10px;
+    color: darkgray;
+  }
+}
+
+h4.dashboard-header {
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+div.stat-column {
+  text-align: center;
+}

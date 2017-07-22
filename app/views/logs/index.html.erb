@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-lg-6 col-lg-offset-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Mileage Logs</h3>
+      </div>
+      <% if @logs.empty? %>
+      <div class="panel-body">
+        <p>There's nothing here yet. <%= link_to "Add", new_log_path %> some mileage logs first!</p>
+      </div>
+      <% else %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Distance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @logs.each do |log| %>
+          <tr>
+            <td><%= log.number_for_user %></td>
+            <td><%= log.formatted_long_date %></td>
+            <td><%= log.travel_type.humanize %></td>
+            <td><%= log.distance %> miles</td>
+          </tr>
+          <% end %>
+          <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>Grand Total</td>
+            <td><%= current_user.total_miles %> miles</td>
+          </tr>
+        </tbody>
+      </table>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
