@@ -31,8 +31,10 @@ RSpec.describe LogsController, type: :controller do
 
     it 'POST#create - happy' do
       attrs = FactoryGirl.attributes_for(:driving_log)
-      post :create, params: { log: attrs }
-      expect(response).to redirect_to log_path(Log.last)
+      expect {
+        post :create, params: { log: attrs }
+      }.to change(Log, :count)
+      expect(response).to redirect_to log_path(id: @log.id + 1)
     end
 
     it 'POST#create - sad' do
