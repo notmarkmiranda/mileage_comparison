@@ -1,5 +1,5 @@
 class Log < ApplicationRecord
-  default_scope { order(created_at: :desc) }
+  default_scope { order(date: :asc) }
   validates_presence_of :user_id
   validates_presence_of :distance
   validates_presence_of :date
