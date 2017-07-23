@@ -29,7 +29,7 @@ RSpec.describe UsersController, type: :controller do
     end
 
     it 'PATCH#update' do
-      patch :update, params: { id: @user.id, user: { email: "a@b.com", login: "1234", password: "asdf" } }
+      patch :update, params: { id: @user.id, user: { email: "a@b.com" } }
       expect(response).to redirect_to @user
     end
   end

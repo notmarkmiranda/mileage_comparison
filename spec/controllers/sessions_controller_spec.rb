@@ -12,7 +12,7 @@ RSpec.describe SessionsController, type: :controller do
     end
 
     it 'POST#create - happy' do
-      post :create, params: { session: { login: @user.login, password: 'password' } }
+      post :create, params: { session: { email: @user.email, password: 'password' } }
       expect(response).to redirect_to dashboard_path
     end
 
@@ -22,7 +22,7 @@ RSpec.describe SessionsController, type: :controller do
     end
 
     it 'POST#create - sad password' do
-      post :create, params: { session: { login: @user.login, password: 'passwordz' } }
+      post :create, params: { session: { login: @user.email, password: 'passwordz' } }
       expect(response).to render_template :new
     end
 

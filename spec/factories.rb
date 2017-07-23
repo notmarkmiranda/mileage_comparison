@@ -6,8 +6,8 @@ FactoryGirl.define do
 
   factory :user do
     sequence(:email) { |n| "asdf#{n}@gmail.com" }
-    sequence(:login) { |n| "12345#{n}" }
     password "password"
+    password_confirmation "password"
   end
 
   factory :driving_log, class: Log do
