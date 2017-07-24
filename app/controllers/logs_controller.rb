@@ -25,6 +25,7 @@ class LogsController < ApplicationController
   end
 
   def edit
+    @travel_types = Log.travel_types.keys
   end
 
   def update
