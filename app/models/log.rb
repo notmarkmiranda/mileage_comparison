@@ -14,10 +14,14 @@ class Log < ApplicationRecord
   end
 
   def formatted_long_date
-    date.strftime("%A, %B %e, %Y")
+    date.strftime("%A, %B%e, %Y")
   end
 
   def number_for_user
     user.logs.sort_by(&:date).index(self) + 1
+  end
+
+  def placeholder_date
+    date.nil? ? Date.today.to_s : date
   end
 end

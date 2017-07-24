@@ -22,5 +22,6 @@ FactoryGirl.define do
     distance { FactoryGirl.generate(:random_number) }
     date Date.new(2015, 5, 9)
     travel_type 'manual'
+    notes 'note'
   end
 end
