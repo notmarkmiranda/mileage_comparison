@@ -20,7 +20,7 @@ RSpec.describe UsersController, type: :controller do
     it 'POST#create' do
       attrs = FactoryGirl.attributes_for(:user)
       post :create, params: { user: attrs }
-      expect(response).to redirect_to user_path(User.last)
+      expect(response).to redirect_to dashboard_path
     end
 
     it 'GET#edit' do

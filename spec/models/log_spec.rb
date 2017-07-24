@@ -15,8 +15,8 @@ RSpec.describe Log, type: :model do
   context 'methods' do
     before do
       user = FactoryGirl.create(:user)
-      first_log = FactoryGirl.create(:manual_log, user: user)
-      other_log = FactoryGirl.create(:driving_log)
+      FactoryGirl.create(:manual_log, user: user)
+      FactoryGirl.create(:driving_log)
       @second_log = FactoryGirl.create(:driving_log, user: user)
     end
 
