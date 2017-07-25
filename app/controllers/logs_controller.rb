@@ -1,4 +1,5 @@
 class LogsController < ApplicationController
+  helper NumberHelper
   before_action :require_user
   before_action :load_log, except: [:index, :new, :create]
   before_action :check_ownership, except: [:index, :new, :create]
