@@ -24,4 +24,5 @@ class Log < ApplicationRecord
   def placeholder_date
     date.nil? ? Date.today.to_s : date
   end
+
 end

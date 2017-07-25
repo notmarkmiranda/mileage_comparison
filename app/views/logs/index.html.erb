@@ -14,6 +14,7 @@
           <tr>
             <th>#</th>
             <th>Date</th>
+            <th>Notes</th>
             <th>Type</th>
             <th>Distance</th>
           </tr>
@@ -23,15 +24,17 @@
           <tr>
             <td><%= log.number_for_user %></td>
             <td><%= log.formatted_long_date %></td>
+            <td><%= log.notes.truncate(10, separator: ' ') %></td>
             <td><%= log.travel_type.humanize %></td>
-            <td><%= log.distance %> miles</td>
+            <td><%= format_distance(log.distance) %></td>
           </tr>
           <% end %>
           <tr>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
+            <td>&nbsp;</td>
             <td>Grand Total</td>
-            <td><%= current_user.total_miles %> miles</td>
+            <td><%= format_distance(current_user.total_miles) %> miles</td>
           </tr>
         </tbody>
       </table>
