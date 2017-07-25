@@ -18,6 +18,10 @@
             </div>
             <%= f.submit "Sign In", class: 'btn btn-default' %>
           <% end %>
+          <hr>
+          <%= link_to  'https://www.strava.com/oauth/authorize?client_id=19189&response_type=code&redirect_uri=http://localhost:3000/token_exchange' do %>
+            <%= image_tag 'btn_strava_connectwith_orange.png' %>
+          <% end %>
         </div>
       </div>
 

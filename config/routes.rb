@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new', as: 'login'
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
+
+  get '/token_exchange', to: 'pages#show'
 end
