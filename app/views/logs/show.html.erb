@@ -3,9 +3,9 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">Mileage Log #<%= @log.number_for_user %>
-        <div class="action-buttons btn-group btn-group-xs pull-right" role="group" aria-label="...">
-            <%= link_to "Edit", edit_log_path(@log), class: "btn btn-default" %>
-            <button type="button" class="btn btn-danger">Delete</button>
+        <div class="action-buttons pull-right" role="group" aria-label="...">
+            <%= link_to "Edit", edit_log_path(@log), class: "btn btn-xs btn-default" %>
+            <%= button_to "Delete", @log, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Are you sure you want to delete this mileage log?' } %>
           </div>
         </h3>
       </div>

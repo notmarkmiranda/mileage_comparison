@@ -12,6 +12,9 @@
 
 div.action-buttons {
   margin-top: -3px;
+  & > form {
+    display: inline;
+  }
 }
 
 .quick-stats-header {
@@ -35,3 +38,5 @@ h4.dashboard-header {
 div.stat-column {
   text-align: center;
 }
+
+
