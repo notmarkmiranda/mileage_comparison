@@ -17,6 +17,7 @@
             <th>Notes</th>
             <th>Type</th>
             <th>Distance</th>
+            <th>&nbsp;</th>
           </tr>
         </thead>
         <tbody>
@@ -27,6 +28,12 @@
             <td><%= log.notes.truncate(10, separator: ' ') %></td>
             <td><%= log.travel_type.humanize %></td>
             <td><%= format_distance(log.distance) %></td>
+            <td>
+              <div class="action-buttons" role="group">
+                <%= link_to "Edit", edit_log_path(log), class: "btn btn-xs btn-default" %>
+                <%= button_to "Delete", log, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Are you sure you want to delete this mileage log?' } %>
+              </div>
+            </td>
           </tr>
           <% end %>
           <tr>
@@ -35,6 +42,7 @@
             <td>&nbsp;</td>
             <td>Grand Total</td>
             <td><%= format_distance(current_user.total_miles) %> miles</td>
+            <td>&nbsp;</td>
           </tr>
         </tbody>
       </table>
