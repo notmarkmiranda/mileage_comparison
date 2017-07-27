@@ -16,6 +16,8 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 gem 'bcrypt', '~> 3.1.7'
 gem 'jbuilder', '~> 2.5'
+gem 'figaro'
+gem 'strava-api-v3'
 
 group :development, :test do
   gem 'factory_girl_rails', '~>4.0'

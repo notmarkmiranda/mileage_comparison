@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170723141221) do
+ActiveRecord::Schema.define(version: 20170727035345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,14 @@ ActiveRecord::Schema.define(version: 20170723141221) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "strava_id"
+    t.string "access_token"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "profile_picture"
+    t.string "city"
+    t.string "state"
+    t.string "country"
   end
 
   add_foreign_key "logs", "users"

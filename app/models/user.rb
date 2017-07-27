@@ -11,6 +11,21 @@ class User < ApplicationRecord
     manual - driven
   end
 
+  def self.from_strava(access_token, athlete_info)
+    user                 = find_or_create_by(strava_id: athlete_info["id"])
+    user.access_token    = access_token
+    user.first_name      = athlete_info["firstname"]
+    user.last_name       = athlete_info["lastname"]
+    user.profile_picture = athlete_info["profile"]
+    user.city            = athlete_info["city"]
+    user.state           = athlete_info["state"]
+    user.country         = athlete_info["country"]
+    user.email           = athlete_info["email"]
+    user.password        = SecureRandom.hex(9)
+    user.save
+    user
+  end
+
   def total_specific_miles(type)
     applicable_logs = logs.where(travel_type: type)
     applicable_logs.empty? ? 0 : applicable_logs.sum(&:distance)
