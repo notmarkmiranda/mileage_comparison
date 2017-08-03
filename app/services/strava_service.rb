@@ -7,4 +7,9 @@ class StravaService
     athlete_information = access_information['athlete']
     User.from_strava(access_token, athlete_information)
   end
+
+
+  def self.client(access_token)
+    @client ||= Strava::Api::V3::Client.new(access_token: access_token)
+  end
 end
