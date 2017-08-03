@@ -5,9 +5,8 @@ class User < ApplicationRecord
 
   has_many :logs
 
-  def strava_local_dissonance?
-    # maybe rewrite based on last local_log_with_strava_id vs. most_recent strava_activity
-    StravaService.client(access_token).list_athlete_activities.count != logs.count
+  def strava_local_dissonance?(strava_count)
+    strava_count != logs.pluck(:strava_id).count
   end
 
   def miles_variance
