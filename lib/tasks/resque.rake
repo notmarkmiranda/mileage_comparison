@@ -4,6 +4,8 @@ namespace :resque do
   task :setup do
     require 'resque'
     ENV['QUEUE'] = '*'
+    ENV['TERM_CHILD'] = '1'
+    ENV['RESQUE_TERM_TIMEOUT'] = '10'
 
     Resque.redis = 'localhost:6379' unless Rails.env == 'production'
   end
