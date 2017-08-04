@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170727035345) do
+ActiveRecord::Schema.define(version: 20170731201634) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,11 +18,13 @@ ActiveRecord::Schema.define(version: 20170727035345) do
   create_table "logs", force: :cascade do |t|
     t.bigint "user_id"
     t.decimal "distance"
-    t.date "date"
     t.integer "travel_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "notes"
+    t.integer "strava_id"
+    t.string "name"
+    t.datetime "activity_date"
     t.index ["user_id"], name: "index_logs_on_user_id"
   end
 

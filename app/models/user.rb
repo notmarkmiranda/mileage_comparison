@@ -5,6 +5,10 @@ class User < ApplicationRecord
 
   has_many :logs
 
+  def strava_local_dissonance?(strava_count)
+    strava_count != logs.pluck(:strava_id).count
+  end
+
   def miles_variance
     manual = total_specific_miles(1)
     driven = total_specific_miles(0)

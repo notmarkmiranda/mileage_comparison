@@ -18,6 +18,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'jbuilder', '~> 2.5'
 gem 'figaro'
 gem 'strava-api-v3'
+gem 'redis'
+gem 'resque', require: 'resque/server'
 
 group :development, :test do
   gem 'factory_girl_rails', '~>4.0'

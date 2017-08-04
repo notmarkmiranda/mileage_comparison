@@ -13,14 +13,14 @@ FactoryGirl.define do
   factory :driving_log, class: Log do
     user
     distance { FactoryGirl.generate(:random_number) }
-    date Date.new(2015, 5, 9)
+    activity_date Date.new(2015, 5, 9)
     travel_type 'driving'
   end
 
   factory :manual_log, class: Log do
     user
     distance { FactoryGirl.generate(:random_number) }
-    date Date.new(2015, 5, 9)
+    activity_date Date.new(2015, 5, 9)
     travel_type 'manual'
     notes 'note'
   end
