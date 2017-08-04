@@ -20,7 +20,7 @@
           <% end %>
           <hr>
           <p class="smaller-text">
-            <%= link_to "https://www.strava.com/oauth/authorize?client_id=19189&response_type=code&redirect_uri=#{ ENV['token_exchange_url'] }" do %>
+            <%= link_to "https://www.strava.com/oauth/authorize?client_id=19189&response_type=code&redirect_uri=#{token_exchange_url}" do %>
             <%= image_tag 'btn_strava_connectwith_orange.png' %>
           <% end %>
         </div>
