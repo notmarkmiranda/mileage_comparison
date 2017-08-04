@@ -52,6 +52,6 @@ class LogsController < ApplicationController
   end
 
   def log_params
-    params.require(:log).permit(:user_id, :distance, :date, :travel_type, :notes)
+    params.require(:log).permit(:user_id, :distance, :activity_date, :travel_type, :notes)
   end
 end

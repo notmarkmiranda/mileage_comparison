@@ -14,7 +14,7 @@ class Log < ApplicationRecord
   end
 
   def formatted_long_date
-    activity_date.strftime("%A, %B %e, %Y")
+    activity_date.strftime("%A, %B%e, %Y")
   end
 
   def number_for_user

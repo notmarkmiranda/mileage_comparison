@@ -18,7 +18,7 @@ class StravaImportJob < ApplicationJob
     user.logs.create(distance: (activity['distance'] / 1609.344),
                      travel_type: 'manual',
                      notes: activity['description'],
-                     strava_id: activity_id,
+                     strava_id: activity['id'],
                      name: activity['name'],
                      activity_date: DateTime.strptime(activity['start_date']))
   end

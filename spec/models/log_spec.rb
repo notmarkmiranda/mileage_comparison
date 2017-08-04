@@ -4,7 +4,7 @@ RSpec.describe Log, type: :model do
   context 'validations' do
     it { should validate_presence_of :user_id }
     it { should validate_presence_of :distance }
-    it { should validate_presence_of :date }
+    it { should validate_presence_of :activity_date }
     it { should validate_presence_of :travel_type }
   end
 
@@ -36,7 +36,7 @@ RSpec.describe Log, type: :model do
     end
 
     it '#placeholder_date - true path' do
-      expect(@second_log.placeholder_date).to eq(@second_log.date)
+      expect(@second_log.placeholder_date).to eq(@second_log.activity_date)
     end
 
     it '#placeholder_date - false path' do
