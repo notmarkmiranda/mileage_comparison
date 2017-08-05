@@ -42,5 +42,10 @@ RSpec.describe Log, type: :model do
     it '#placeholder_date - false path' do
       expect(Log.new.placeholder_date).to eq(Date.today.to_s)
     end
+
+    it '#truncated_name' do
+      @first_log.update(name: 'abcdefghijklmnopqrs t')
+      expect(@first_log.truncated_name).to eq('abcdefghijklmnopq...')
+    end
   end
 end
