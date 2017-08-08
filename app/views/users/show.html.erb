@@ -9,22 +9,5 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col-md-3 col-xs-12 stat-column">
-    <h4 class="dashboard-header">manual mileage</h4>
-    <h2><%= format_distance(current_user.total_specific_miles(1)) %></h2>
-  </div> <div class="col-md-3 col-xs-12 stat-column">
-    <h4 class="dashboard-header">driven mileage</h4>
-    <h2><%= format_distance(current_user.total_specific_miles(0)) %></h2>
-  </div>
-  <div class="col-md-3 col-xs-12 stat-column">
-    <h4 class="dashboard-header">variance</h4>
-    <h2><%= format_distance(current_user.miles_variance) %></h2>
-  </div>
-  <div class="col-md-3 col-xs-12 stat-column">
-    <h4 class="dashboard-header">total miles</h4>
-    <h2><%= link_to format_distance(current_user.total_miles), logs_path %></h2>
-  </div>
-</div>
-
+<%= render partial: 'dashboard', locals: { totals: current_user.total_miles, manual: current_user.total_specific_miles(1), driven: current_user.total_specific_miles(0), variance: current_user.miles_variance } %>
 <hr>

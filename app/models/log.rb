@@ -1,4 +1,5 @@
 class Log < ApplicationRecord
+  include NumberHelper
   default_scope { order(activity_date: :asc) }
   validates_presence_of :user_id
   validates_presence_of :distance
@@ -6,6 +7,8 @@ class Log < ApplicationRecord
   validates_presence_of :travel_type
 
   belongs_to :user
+
+  after_create_commit { send_to_dashboard(self) }
 
   enum travel_type: [:driving, :manual]
 
@@ -27,6 +30,17 @@ class Log < ApplicationRecord
 
   def truncated_name
     name.truncate(20, separator: ' ') if name
+  end
+
+  private
+
+  def send_to_dashboard(log)
+    user = User.find(log.user_id)
+    DashboardUpdateJob.perform_later(
+      { manual: user.total_specific_miles(1),
+        driven: user.total_specific_miles(0),
+        variance: user.miles_variance,
+        totals: user.total_miles })
   end
 
 end
