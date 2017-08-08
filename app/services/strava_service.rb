@@ -10,6 +10,6 @@ class StravaService
 
 
   def self.client(access_token)
-    @client ||= Strava::Api::V3::Client.new(access_token: access_token)
+    @client = Strava::Api::V3::Client.new(access_token: access_token)
   end
 end
