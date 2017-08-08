@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170731201634) do
+ActiveRecord::Schema.define(version: 20170805201753) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 20170731201634) do
     t.string "city"
     t.string "state"
     t.string "country"
+    t.boolean "triplog_confirmed", default: false
+    t.string "triplog_email"
   end
 
   add_foreign_key "logs", "users"
