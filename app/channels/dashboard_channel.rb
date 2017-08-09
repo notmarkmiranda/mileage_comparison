@@ -1,6 +1,6 @@
 class DashboardChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "dashboard_channel"
+    stream_from "dashboard_channel_#{current_user.dashboard_token}"
   end
 
   def unsubscribed

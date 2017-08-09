@@ -1,8 +1,8 @@
 class DashboardUpdateJob < ApplicationJob
   queue_as :default
 
-  def perform(args)
-    ActionCable.server.broadcast('dashboard_channel', message: render_dashboard(args))
+  def perform(args, dashboard_token)
+    ActionCable.server.broadcast("dashboard_channel_#{dashboard_token}", message: render_dashboard(args))
   end
 
   private

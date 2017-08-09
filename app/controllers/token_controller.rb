@@ -11,4 +11,3 @@ class TokenController < ApplicationController
     end
   end
 end
-

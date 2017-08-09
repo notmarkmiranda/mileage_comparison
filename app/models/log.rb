@@ -40,7 +40,8 @@ class Log < ApplicationRecord
       { manual: user.total_specific_miles(1),
         driven: user.total_specific_miles(0),
         variance: user.miles_variance,
-        totals: user.total_miles })
+        totals: user.total_miles },
+        user.dashboard_token)
   end
 
 end
