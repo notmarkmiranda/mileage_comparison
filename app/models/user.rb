@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
+  has_secure_token :dashboard_token
   validates :email, presence: true, uniqueness: true
   validates :password_digest, presence: true
 
@@ -37,5 +38,9 @@ class User < ApplicationRecord
 
   def total_miles
     logs.sum(&:distance)
+  end
+
+  def update_token
+    regenerate_dashboard_token
   end
 end
