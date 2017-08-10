@@ -6,6 +6,7 @@ class TriplogConfirmationController < ApplicationController
   def update
     @user = User.find(session[:user_id])
     @user.update(verified_params)
+    # TriplogImportJob.perform_later(@user) if verified_params[:triplog_email].present?
     redirect_to dashboard_path
   end
 
