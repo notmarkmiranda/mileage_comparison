@@ -10,7 +10,6 @@ RSpec.describe TokenController, type: :controller do
     end
 
     it 'GET#create' do
-      @user.update(triplog_confirmed: true)
       get :create, params: { code: 'asdfjkl1234' }
       expect(response).to redirect_to dashboard_path
     end

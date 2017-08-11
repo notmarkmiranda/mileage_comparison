@@ -4,10 +4,6 @@ class TokenController < ApplicationController
     user = StravaService.authenticate(code)
     StravaImportJob.perform_later(user, user.access_token)
     session[:user_id] = user.id
-    if user.triplog_confirmed
-      redirect_to dashboard_path
-    else
-      redirect_to triplog_confirmation_path
-    end
+    redirect_to dashboard_path
   end
 end

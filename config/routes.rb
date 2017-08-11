@@ -5,8 +5,6 @@ Rails.application.routes.draw do
   resources :logs
 
   get '/dashboard', to: 'users#show', as: 'dashboard'
-  get '/triplog-confirmation', to: 'triplog_confirmation#edit', as: 'triplog_confirmation'
-  patch '/triplog-confirmation', to: 'triplog_confirmation#update'
 
   get '/auth/:provider/callback', to: 'sessions#create'
 
