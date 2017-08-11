@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170809194422) do
+ActiveRecord::Schema.define(version: 20170811185255) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,8 +41,6 @@ ActiveRecord::Schema.define(version: 20170809194422) do
     t.string "city"
     t.string "state"
     t.string "country"
-    t.boolean "triplog_confirmed", default: false
-    t.string "triplog_email"
     t.string "dashboard_token"
     t.index ["dashboard_token"], name: "index_users_on_dashboard_token", unique: true
   end
