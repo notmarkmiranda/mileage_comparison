@@ -23,10 +23,10 @@ class StravaImportJob < ApplicationJob
                      activity_date: DateTime.strptime(activity['start_date']))
   end
 
-  def get_strava_activities(page=1, activities={})
-    current_activities = @client.list_athlete_activities(per_page: 200, page: page)
-    current_activities.each { |obj| activities[obj["id"]] = obj }
-    get_strava_activities(page + 1, activities) if current_activities.count == 200
+  def get_strava_activities(page = 1, activities = {})
+    current_acts = @client.list_athlete_activities(per_page: 200, page: page)
+    current_acts.each { |obj| activities[obj['id']] = obj }
+    get_strava_activities(page + 1, activities) if current_acts.count == 200
     activities
   end
 end

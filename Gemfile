@@ -20,6 +20,7 @@ gem 'figaro'
 gem 'strava-api-v3'
 gem 'redis'
 gem 'resque', require: 'resque/server'
+gem 'httparty'
 
 group :development, :test do
   gem 'factory_girl_rails', '~>4.0'

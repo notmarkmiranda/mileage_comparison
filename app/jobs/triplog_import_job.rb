@@ -2,6 +2,6 @@ class TriplogImportJob < ApplicationJob
   queue_as :default
 
   def perform(user)
-    # triplog service
+    @client = TriplogService.new(user.triplog_email)
   end
 end
