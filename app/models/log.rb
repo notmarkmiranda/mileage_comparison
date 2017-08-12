@@ -7,6 +7,7 @@ class Log < ApplicationRecord
   validates_presence_of :travel_type
 
   belongs_to :user
+  belongs_to :odometer_reading, optional: true
 
   after_create_commit { send_to_dashboard(self) }
 

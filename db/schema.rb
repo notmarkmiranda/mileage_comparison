@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170811185255) do
+ActiveRecord::Schema.define(version: 20170811233433) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,7 +25,17 @@ ActiveRecord::Schema.define(version: 20170811185255) do
     t.integer "strava_id"
     t.string "name"
     t.datetime "activity_date"
+    t.bigint "odometer_reading_id"
+    t.index ["odometer_reading_id"], name: "index_logs_on_odometer_reading_id"
     t.index ["user_id"], name: "index_logs_on_user_id"
+  end
+
+  create_table "odometer_readings", force: :cascade do |t|
+    t.date "date"
+    t.integer "mileage"
+    t.string "notes"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_odometer_readings_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -45,5 +55,7 @@ ActiveRecord::Schema.define(version: 20170811185255) do
     t.index ["dashboard_token"], name: "index_users_on_dashboard_token", unique: true
   end
 
+  add_foreign_key "logs", "odometer_readings"
   add_foreign_key "logs", "users"
+  add_foreign_key "odometer_readings", "users"
 end

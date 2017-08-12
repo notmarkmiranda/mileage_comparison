@@ -10,6 +10,7 @@ RSpec.describe Log, type: :model do
 
   context 'relationships' do
     it { should belong_to :user }
+    it { should belong_to :odometer_reading }
   end
 
   context 'methods' do

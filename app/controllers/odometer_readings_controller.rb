@@ -1,0 +1,2 @@
+class OdometerReadingsController < ApplicationController
+end
