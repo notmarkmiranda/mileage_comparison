@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :users, except: [:index, :show, :delete]
   resources :logs
+  resources :odometer_readings
 
   get '/dashboard', to: 'users#show', as: 'dashboard'
 

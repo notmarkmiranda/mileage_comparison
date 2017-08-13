@@ -5,6 +5,7 @@ class User < ApplicationRecord
   validates :password_digest, presence: true
 
   has_many :logs
+  has_many :odometer_readings
 
   def strava_local_dissonance?(strava_count)
     strava_count != logs.pluck(:strava_id).count

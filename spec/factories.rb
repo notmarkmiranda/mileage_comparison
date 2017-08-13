@@ -24,4 +24,11 @@ FactoryGirl.define do
     travel_type 'manual'
     notes 'note'
   end
+
+  factory :odometer_reading do
+    user
+    date Date.new(2017, 5, 9)
+    sequence(:mileage) { |n| "54332#{n}".to_i }
+    notes 'new note'
+  end
 end
