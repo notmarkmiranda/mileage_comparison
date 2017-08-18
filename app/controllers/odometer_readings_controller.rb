@@ -9,7 +9,9 @@ class OdometerReadingsController < ApplicationController
 
   def create
     @or = current_user.odometer_readings.new(odometer_reading_params)
+    other_readings = OdometerReading.other_readings?(current_user)
     if @or.save
+      LogCreatorJob.perform_now(@or, @or.previous(current_user)) if other_readings
       redirect_to @or
     else
       render :new

@@ -26,11 +26,21 @@ describe OdometerReadingsController, type: :controller do
 
   context 'post' do
     before do
-      user = FactoryGirl.create(:user)
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+      @user = FactoryGirl.create(:user)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
     end
 
     it 'POST#create - happy path' do
+      attrs = FactoryGirl.attributes_for(:odometer_reading)
+      expect {
+        post :create, params: { odometer_reading: attrs }
+      }.to change(OdometerReading, :count)
+      expect(response).to redirect_to odometer_reading_path(OdometerReading.last)
+
+    end
+
+    it 'second POST#create - happy path' do
+      FactoryGirl.create(:odometer_reading, user: @user)
       attrs = FactoryGirl.attributes_for(:odometer_reading)
       expect {
         post :create, params: { odometer_reading: attrs }
